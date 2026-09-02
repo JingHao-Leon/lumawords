@@ -7,8 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-iOS%2017%2B-blue.svg)](https://developer.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/Swift-5-orange.svg)](https://swift.org)
-[![GitHub last commit](https://img.shields.io/github/last-commit/JingHao-Leon/nextjs)](https://github.com/JingHao-Leon/nextjs/commits/main)
-[![GitHub repo size](https://img.shields.io/github/repo-size/JingHao-Leon/nextjs)](https://github.com/JingHao-Leon/nextjs)
+[![GitHub last commit](https://img.shields.io/github/last-commit/JingHao-Leon/lumawords)](https://github.com/JingHao-Leon/lumawords/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/JingHao-Leon/lumawords)](https://github.com/JingHao-Leon/lumawords)
 
 </div>
 
