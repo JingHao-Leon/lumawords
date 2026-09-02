@@ -1,126 +1,106 @@
 <div align="center">
 
-# Next.js 应用
+# 光屿单词 LumaWords
 
-**基于 create-next-app 起步的现代化全栈起点 —— Next.js 16 · React 19 · TypeScript · Tailwind CSS 4**
+**一个以沉浸感为中心的 iOS 背单词应用 · An immersion-first vocabulary app for iOS**
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.1.4-black?logo=next.js)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![License](https://img.shields.io/github/license/JingHao-Leon/nextjs)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/JingHao-Leon/nextjs)](https://github.com/JingHao-Leon/nextjs/commits/main)
-[![Repo Size](https://img.shields.io/github/repo-size/JingHao-Leon/nextjs)](https://github.com/JingHao-Leon/nextjs)
-
-[![在线预览（Vercel）](https://img.shields.io/badge/%F0%9F%9A%80%20%E5%9C%A8%E7%BA%BF%E9%A2%84%E8%A7%88-Vercel-000000?style=for-the-badge)](https://nextjs-kohl-six-87.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-iOS%2017%2B-blue.svg)](https://developer.apple.com/ios/)
+[![Swift](https://img.shields.io/badge/Swift-5-orange.svg)](https://swift.org)
+[![GitHub last commit](https://img.shields.io/github/last-commit/JingHao-Leon/nextjs)](https://github.com/JingHao-Leon/nextjs/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/JingHao-Leon/nextjs)](https://github.com/JingHao-Leon/nextjs)
 
 </div>
 
 ---
 
-一个干净的 Next.js 16 起步工程：App Router 架构、React 19、Tailwind CSS v4、ESLint 9 flat config 全部预置完毕，`npm run dev` 即可开始开发。适合作为新项目的模板基座。
+## ✨ 功能亮点
 
-## ✨ 技术栈亮点
+| 功能 | 说明 |
+|---|---|
+| 🔊 美式发音朗读 | 基于 `AVSpeechSynthesizer`，以 `en-US` 朗读当前单词 |
+| 🌊 程序化动态背景 | 翻涌海面、微嘈教室、低清短视频三种沉浸背景，不缓存、不无限加载视频 |
+| 🎧 实时白噪音 | 与背景场景对应的可播放/暂停环境音（海浪、教室人声） |
+| 📚 多词书切换 | 内置 8 本词书（中考 / 高考 / 四六级 / 考研 / 雅思 / 托福 / GRE），词库由 ECDICT 按考试标签过滤生成 |
+| 🧠 艾宾浩斯复习 | 按 0 / 1 / 2 / 4 / 7 / 15 / 30 天间隔自动安排复习 |
+| ✅ 学习反馈 | 「记住了 / 还不熟」即时更新复习阶段、今日完成量与待复习量 |
+| 💾 本地持久化 | 昵称登录与学习记录通过 `UserDefaults` 保存在本机，离线可用 |
 
-<table>
-<tr>
-<td width="50%">
+## 📖 内置词库
 
-### ⚡ Next.js 16 + App Router
-最新的 App Router 目录约定（`app/`），根布局 `layout.tsx` 包裹页面 `page.tsx`，服务端组件默认可用。
+| 词书 | 说明 | 词条数 |
+|---|---|---:|
+| 中考词汇 | 初中核心词 | 1,600 |
+| 高考词汇 | 高中核心词 | 3,674 |
+| 大学英语四级 | CET-4 大纲词 | 3,846 |
+| 大学英语六级 | CET-6 大纲词 | 5,406 |
+| 考研词汇 | 考研大纲词 | 4,801 |
+| 雅思词汇 | 学术与生活场景 | 5,038 |
+| 托福词汇 | 北美学术英语 | 6,970 |
+| GRE 核心 | 高阶学术词汇 | 7,504 |
 
-</td>
-<td width="50%">
+合计 **38,839** 词条。
 
-### ⚛️ React 19 + TypeScript 5
-React 19.2 搭配完整的类型支持（`@types/react` / `@types/node`），`strict` 模式的 `tsconfig.json` 开箱即用。
+## 🛠 技术栈
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+- **Swift 5 + SwiftUI**，最低支持 **iOS 17**
+- `AVFoundation`（语音朗读 / 白噪音 / 视频背景播放）
+- `UserDefaults` 本地持久化，无后端依赖
+- Xcode 工程，无第三方依赖（无 CocoaPods / SPM 包）
 
-### 🎨 Tailwind CSS v4
-新一代 CSS-first 配置方式：`globals.css` 里通过 `@import "tailwindcss"` 与 `@theme` 定义主题变量，内置深色模式（`prefers-color-scheme`）。
-
-</td>
-<td width="50%">
-
-### 🔤 Geist 字体与规范工具链
-通过 `next/font` 自动优化加载 Vercel 的 Geist / Geist Mono 字体；ESLint 9 flat config 集成 `core-web-vitals` 与 TypeScript 规则。
-
-</td>
-</tr>
-</table>
-
-## 🧱 应用结构
-
-```mermaid
-flowchart TD
-    A["浏览器请求 /"] --> B["app/layout.tsx<br>RootLayout"]
-    B --> C["next/font/google<br>Geist / Geist Mono 字体"]
-    B --> D["app/globals.css<br>Tailwind v4 全局样式"]
-    B --> E["app/page.tsx<br>Home 首页"]
-    E --> F["public/<br>静态资源（SVG 图标等）"]
-```
-
-## 🚀 快速上手
-
-环境要求：Node.js 18.18+（Next.js 16 要求）。
-
-```bash
-# 安装依赖
-npm install
-
-# 启动开发服务器（默认 http://localhost:3000）
-npm run dev
-
-# 生产构建
-npm run build
-
-# 启动生产服务器
-npm run start
-
-# 代码检查
-npm run lint
-```
-
-启动后编辑 `app/page.tsx`，页面会自动热更新。
-
-## 📁 目录结构
+## 📁 项目结构
 
 ```
-├── app/
-│   ├── layout.tsx          # 根布局：注入 Geist 字体与全局样式
-│   ├── page.tsx            # 首页组件
-│   ├── globals.css         # Tailwind v4 主题变量与全局样式
-│   └── favicon.ico
-├── public/                 # 静态资源（next / vercel / globe 等 SVG）
-├── next.config.ts          # Next.js 配置（当前为默认空配置）
-├── eslint.config.mjs       # ESLint 9 flat config（core-web-vitals + TS）
-├── postcss.config.mjs      # PostCSS 接入 @tailwindcss/postcss
-├── tsconfig.json           # TypeScript 配置（strict）
-└── package.json
+.
+├── LumaWords.xcodeproj/          # Xcode 工程
+├── LumaWords/
+│   ├── LumaWordsApp.swift        # App 入口
+│   ├── RootView.swift            # 根视图与导航
+│   ├── StudyView.swift           # 背单词主界面
+│   ├── LibraryViews.swift        # 词书库与切换
+│   ├── StudyStore.swift          # 学习状态与艾宾浩斯调度
+│   ├── Models.swift              # 数据模型（词书 / 词条）
+│   ├── AmbientBackgroundView.swift  # 程序化动态背景
+│   ├── AmbientSoundEngine.swift     # 白噪音引擎
+│   ├── WordBank/                 # 8 本词库 JSON + manifest.json
+│   ├── Media/                    # 背景视频与白噪音音频
+│   └── Assets.xcassets/          # App 图标等资源
+├── MediaStaging/videos/meme/     # 未收入 bundle 的暂存素材
+└── docs/media-sources.md         # 素材来源清单与许可说明
 ```
 
-## ⚙️ 配置要点
+## 🚀 运行方法
 
-- **样式**：Tailwind CSS v4 采用 CSS-first 配置，主题变量定义在 `app/globals.css` 的 `@theme` 块中，无需 `tailwind.config.js`。
-- **字体**：`app/layout.tsx` 中通过 `next/font/google` 加载 Geist / Geist Mono，构建时自动优化，无布局偏移。
-- **Lint**：ESLint 使用新版 flat config（`eslint.config.mjs`），已忽略 `.next/`、`out/`、`build/` 等产物目录。
-- **部署**：已部署至 [Vercel](https://nextjs-kohl-six-87.vercel.app)；推送后可直接通过 Vercel 导入仓库实现持续部署。
+1. 用 Xcode（15+）打开 `LumaWords.xcodeproj`
+2. 选择 iOS 17 或更新版本的模拟器 / 真机
+3. ⌘R 运行
 
-## 🗺️ 现状与 Roadmap
+## 🎬 素材来源
 
-本项目目前是 **create-next-app 的初始脚手架**，尚未包含业务功能。后续计划：
+所有音视频素材均来自 **Mixkit / Pixabay / Pexels** 的免费商用许可（无需署名），完整清单、直链与收录状态见 [docs/media-sources.md](docs/media-sources.md)。
 
-- [ ] 添加业务页面与 API 路由（`app/api/`）
-- [ ] 引入数据层与状态管理
-- [ ] 补充测试（单元 / E2E）
-- [ ] 自定义首页内容，替换默认模板页
+## 🗺 Roadmap
+
+- [ ] Sign in with Apple + CloudKit 多设备同步（当前为本地优先原型）
+- [ ] 接入取得授权的完整词库（当前词书为 ECDICT 演示词库）
+- [ ] 学习统计与数据可视化
 
 ---
 
-<div align="center">
-<sub>
-基于 <a href="https://nextjs.org/docs/app/api-reference/cli/create-next-app">create-next-app</a> 构建 ｜ 在线预览：<a href="https://nextjs-kohl-six-87.vercel.app">nextjs-kohl-six-87.vercel.app</a>
-</sub>
-</div>
+## English
+
+**LumaWords (光屿单词)** is an immersion-first vocabulary app for iOS 17+, built with Swift 5 and SwiftUI. It pairs each word with procedurally generated ambient backgrounds — rolling ocean waves, a murmuring classroom, or looping lo-fi short videos — together with matching white noise, so review sessions feel like a place rather than a flashcard deck.
+
+Highlights:
+
+- **en-US text-to-speech** for every word via `AVSpeechSynthesizer`
+- **Eight built-in word books** (38,839 entries total): middle/high school, CET-4/6, postgraduate entrance, IELTS, TOEFL and GRE, filtered from ECDICT by exam tag
+- **Ebbinghaus spaced repetition** with 0 / 1 / 2 / 4 / 7 / 15 / 30-day intervals
+- **Local-first**: nickname sign-in and all study records persist in `UserDefaults` — no backend, works offline
+- All media assets are free for commercial use (Mixkit / Pixabay / Pexels licenses); see [docs/media-sources.md](docs/media-sources.md)
+
+This is a demonstrable local-first prototype. Multi-device sync (Sign in with Apple + CloudKit) and fully licensed word books are on the roadmap.
+
+## 📄 License
+
+[MIT](LICENSE) © JingHao-Leon
